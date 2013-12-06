@@ -1,0 +1,19 @@
+  /**
+
+     * Заказ на создание новой подписи: проверка статуса
+
+     * возвращает 0 при отказе, пусто при ожидании, id новой подписи при одобрении
+
+     */
+
+    public function originOrder($order_id) {
+
+        return $this->_doApiCall('pajm.origin.order_get', array(
+
+            'session_id' => $this->session_id,
+
+            'id' => $order_id,
+
+        ));
+
+    }  
