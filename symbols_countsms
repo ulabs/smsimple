@@ -1,0 +1,37 @@
+ /**
+
+  * возвратит количество PDU, которое нужно для отправки 'sms text'
+
+  */
+
+ public function getAmount($message)
+
+ {
+
+        return $this->_doApiCall('pajm.billing.getAmount', array(
+
+            'message' => $message,
+
+        ));
+
+ }
+
+
+
+ /**
+
+  * возвратит количество символов, которое займёт 'sms text' в PDU
+
+  */
+
+ public function getSymbolsCount($message)
+
+ {
+
+        return $this->_doApiCall('pajm.billing.getSymbolsCount', array(
+
+            'message' => $message,
+
+        ));
+
+ }
