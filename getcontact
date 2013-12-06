@@ -1,0 +1,16 @@
+public function getContactCount($params=array()) {
+        return $this->_doApiCall('pajm.contact.select', array(
+            'session_id'   => $this->session_id,
+            'group_id'     => $params['id'],
+            'need_count'   => True,
+        ));
+    }
+
+    public function getContacts($params=array()) {
+        return $this->_doApiCall('pajm.contact.select', array(
+            'session_id'   => $this->session_id,
+            'group_id'     => $params['id'],
+            'start_from'   => $params['offset'] ? $params['offset'] : 0,
+            'limit_from'   => $params['limit'] ? $params['limit'] : 1000,
+        ));
+    }
