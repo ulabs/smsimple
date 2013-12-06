@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace SMSSEND
+{
+    class Class1
+    {
+        string url = "https://smsimple.ru/http_send.php";
+        string urlBal = "https://smsimple.ru/http_balance.php";
+        string user = "username";
+        string pass = "pass";
+        string phone = "790...";
+        string message = "Пробная смс";
+        string or_id = "Номер id из личного кабинета";
+
+        public string SendSMS()
+        {
+            string Out = "";
+            try
+            {
+                System.Net.WebRequest req = System.Net.WebRequest.Create(url + "?user=" + user + "&pass=" + pass + "&or_id=" + or_id + "&phone=" + phone + "&message=" + message);
+                System.Net.WebResponse resp = req.GetResponse();
+                System.IO.Stream stream = resp.GetResponseStream();
+                System.IO.StreamReader sr = new System.IO.StreamReader(stream);
+                Out = sr.ReadToEnd();
+                sr.Close();
+            }
+            catch (Exception)
+            { }
+            return Out;
+        }
+        public string GetBalance()
+        {
+            string Out = "";
+            try
+            {
+                System.Net.WebRequest req = System.Net.WebRequest.Create(urlBal + "?user=" + user + "&pass=" + pass);
+                System.Net.WebResponse resp = req.GetResponse();
+                System.IO.Stream stream = resp.GetResponseStream();
+                System.IO.StreamReader sr = new System.IO.StreamReader(stream);
+                Out = sr.ReadToEnd();
+                sr.Close();
+            }
+            catch (Exception)
+            { }
+            return Out;
+        }
+    }
+}
