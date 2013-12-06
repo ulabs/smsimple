@@ -1,0 +1,22 @@
+ public function deleteContact($params=array()) {
+        return $this->_doApiCall('pajm.contact.delete', array(
+            'session_id' => $this->session_id,
+            'id'        => $params['id'],
+        ));
+    }
+    
+    public function deleteGroup($params=array()) {
+        return $this->_doApiCall('pajm.group.delete', array(
+            'session_id' => $this->session_id,
+            'id'   => $params['id'],
+        ));
+    }
+
+    public function addGroup($params=array()) {
+        return $this->_doApiCall('pajm.group.add', array(
+            'session_id'   => $this->session_id,
+            'title'        => $params['title'],
+            'is_blacklist' => $params['is_blacklist'],
+            'description'  => $params['description'],
+        ));
+    }
